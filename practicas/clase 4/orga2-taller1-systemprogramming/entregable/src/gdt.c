@@ -34,7 +34,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
         },
 
     /* Completar la GDT */
-    //[GDT_IDX_CODE_0] =
+    [GDT_IDX_CODE_0] =
         {
             // <COMPLETAR> con el segmento de codigo nivel 0
             // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
@@ -53,7 +53,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
             .g = 0x01,
             .base_31_24 = 0x00,
         },
-    //[GDT_IDX_CODE_3] =
+    [GDT_IDX_CODE_3] =
         {
             // <COMPLETAR>  con el segmento de codigo nivel 3
             // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
@@ -63,7 +63,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
             .base_23_16 = 0x00,
             .type = 0x1010,
             .s = 0x01,
-            .dpl = 0x11,
+            .dpl = 0x03,
             .p = 0x01,
             .limit_19_16 = 0x00,
             .avl = 0x0,
@@ -72,7 +72,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
             .g = 0x01,
             .base_31_24 = 0x00,
         },
-    //[GDT_IDX_DATA_0] =
+    [GDT_IDX_DATA_0] =
         {
             // <COMPLETAR> con el segmento de datos nivel 0
             // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
@@ -91,7 +91,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
             .g = 0x01,
             .base_31_24 = 0x00,
         },
-    //[GDT_IDX_DATA_3] =
+    [GDT_IDX_DATA_3] =
         {
             // <COMPLETAR> con el segmento de datos nivel 3
             // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
@@ -101,7 +101,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
             .base_23_16 = 0x00,
             .type = 0x0010,
             .s = 0x01,
-            .dpl = 0x11,
+            .dpl = 0x03,
             .p = 0x01,
             .limit_19_16 = 0x00,
             .avl = 0x0,
