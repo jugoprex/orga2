@@ -55,10 +55,13 @@ start:
     call A20_check
 
     ; Cargar la GDT  
+    
     ; <COMPLETAR> ~ 1 linea    
-
+    lgdt [GDT_DESC]
     ;  Setear el bit PE del registro CR0
     ; <COMPLETAR> ~ 3 lineas   
+
+
 
     ; Saltar a modo protegido
     ; Hacemos un salto largo (far jump) y pasamos al codigo de modo protegido, 
