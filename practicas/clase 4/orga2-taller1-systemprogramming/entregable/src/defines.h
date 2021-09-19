@@ -38,12 +38,12 @@
 
 /* COMPLETAR - Valores para los selectores de segmento de la GDT */
 /* Notar que << hace un shift a la izquierda una cantidad X de bits */
-/* en este caso, esta shifteando 3 bits, ¿por que? */
+/* en este caso, esta shifteando 3 bits, ¿por que? -->  hace un shift left 3 para multiplicar por 8*/
 #define GDT_CODE_0_SEL (GDT_IDX_CODE_0 << 3)
-#define GDT_DATA_0_SEL // <COMPLETAR>
+#define GDT_DATA_0_SEL (GDT_IDX_DATA_0 << 3)
 /* | simboliza el OR en bits. Dado que es nivel 3 precisamos que los últimos 2 bits sea el privilegio 0x3*/
-#define GDT_CODE_3_SEL ((GDT_OFF_CODE_3) | //<COMPLETAR> )
-#define GDT_DATA_3_SEL // <COMPLETAR>
+#define GDT_CODE_3_SEL ((GDT_OFF_CODE_3) | 0x0003 )
+#define GDT_DATA_3_SEL ((GDT_OFF_DATA_3) | 0x0003 )
 
 
 
