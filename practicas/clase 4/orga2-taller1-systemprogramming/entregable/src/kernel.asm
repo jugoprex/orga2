@@ -36,6 +36,7 @@ BITS 16
 start:
     ; Deshabilitar interrupciones
     ; <COMPLETAR>  1 línea
+    cli
 
     ; Cambiar modo de video a 80 X 50
     mov ax, 0003h
@@ -60,8 +61,9 @@ start:
     lgdt [GDT_DESC]
     ;  Setear el bit PE del registro CR0
     ; <COMPLETAR> ~ 3 lineas   
-
-
+    mov eax, CR0
+    or eax, 0x00000001 ;cambiamos el primer bit a 1
+    mov CR0, eax
 
     ; Saltar a modo protegido
     ; Hacemos un salto largo (far jump) y pasamos al codigo de modo protegido, 
@@ -74,10 +76,20 @@ modo_protegido:
     ; A partir de aca, todo el codigo se va a ejectutar en modo protegido
     ; Establecer selectores de segmentos DS, ES, GS, FS y SS en el segmento de datos de nivel 0
     ; Pueden usar la constante DS_RING_0_SEL definida en este archivo
-    ; <COMPLETAR> ~ 6 lineas   
-	
+    ; <COMPLETAR> ~ 6 lineas 
+    ; --> medio sus que nos quedo de 5
+    
+    mov DS, DS_RING_0_SEL
+    mov ES, DS_RING_0_SEL
+    mov GS, DS_RING_0_SEL
+    mov FS, DS_RING_0_SEL
+    mov SS, DS_RING_0_SEL
+    	
     ; Establecer el tope y la base de la pila
     ; <COMPLETAR> ~ 2 lineas   
+
+    mov ebp, 0x25000
+    mov esp, 0x25000
 
     ; Imprimir mensaje de bienvenida
     print_text_pm start_pm_msg, start_pm_len, 0x07, 4, 0
