@@ -60,6 +60,7 @@ start:
     ; <COMPLETAR> ~ 1 linea    
     lgdt [GDT_DESC]
     ;  Setear el bit PE del registro CR0
+    xchg bx,bx ;breakpoint
     ; <COMPLETAR> ~ 3 lineas   
     mov eax, CR0
     or eax, 0x00000001 ;cambiamos el primer bit a 1
@@ -79,12 +80,12 @@ modo_protegido:
     ; <COMPLETAR> ~ 6 lineas 
     ; --> medio sus que nos quedo de 5
     
-    mov eax, DS_RING_0_SEL
-    mov DS, eax
-    mov ES, eax
-    mov GS, eax
-    mov FS, eax
-    mov SS, eax
+    mov ax, DS_RING_0_SEL
+    mov DS, ax
+    mov ES, ax
+    mov GS, ax
+    mov FS, ax
+    mov SS, ax
     	
     ; Establecer el tope y la base de la pila
     ; <COMPLETAR> ~ 2 lineas   
@@ -97,7 +98,7 @@ modo_protegido:
 
     ; Inicializar pantalla
     call screen_draw_layout
-
+    xchg bx,bx
     
     ; Ciclar infinitamente 
     mov eax, 0xFFFF

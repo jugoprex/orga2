@@ -80,7 +80,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
         .limit_15_0 = 0x30FF,
             .base_15_0 = 0x0000,
             .base_23_16 = 0x00,
-            .type = 0x3,
+            .type = 0x02,
             .s = 0x01,
             .dpl = 0x00,
             .p = 0x01,
@@ -99,23 +99,34 @@ gdt_entry_t gdt[GDT_COUNT] = {
         .limit_15_0 = 0x30FF,
             .base_15_0 = 0x0000,
             .base_23_16 = 0x00,
-            .type = 0x3,
+            .type = 0x02,
             .s = 0x01,
             .dpl = 0x03,
             .p = 0x01,
             .limit_19_16 = 0x3,
             .avl = 0x0,
             .l = 0x0,
-            .db = 0x1,
             .g = 0x01,
             .base_31_24 = 0x00,
         }
-    //,[GDT_IDX_VIDEO] =
-    //    {
+    ,[GDT_IDX_VIDEO] =
+        {
             // <COMPLETAR> con el segmento para ser usado por el video
             // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
             // con lo correspondiente acorde a lo solicitado en el enunciado
-   //    }
+            .limit_15_0 = 0x14EF,
+            .base_15_0 = 0x8000,
+            .base_23_16 = 0x0B,
+            .type = 0x02 ,
+            .s = 0x01,
+            .dpl = 0x00,
+            .p = 0x01,
+            .limit_19_16 = 0x0,
+            .avl = 0x0,
+            .l = 0x0,
+            .g = 0x00,
+            .base_31_24 = 0x00,
+       }
 };
 
 // Aca hay una inicializacion estatica de una structura que tiene su primer componente el tamano 

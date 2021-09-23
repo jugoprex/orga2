@@ -71,5 +71,6 @@ void screen_draw_box(uint32_t fInit, uint32_t cInit, uint32_t fSize,
 }
 
 void screen_draw_layout(void) {
-  /* COMPLETAR */
+  screen_draw_box(0,0,50,80,0,0);
+  print ("Teamo Team Amogus \n sugma", 0,0,5);
 }
