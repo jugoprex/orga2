@@ -39,14 +39,14 @@ gdt_entry_t gdt[GDT_COUNT] = {
             // <COMPLETAR> con el segmento de codigo nivel 0
             // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
             // con lo correspondiente acorde a lo solicitado en el enunciado
-                .limit_15_0 = 0x3310,
+                .limit_15_0 = 0x30FF,
             .base_15_0 = 0x0000,
             .base_23_16 = 0x00,
             .type = 0xA,
             .s = 0x01,
             .dpl = 0x00,
             .p = 0x01,
-            .limit_19_16 = 0x00,
+            .limit_19_16 = 0x3,
             .avl = 0x0,
             .l = 0x0,
             .db = 0x1,
