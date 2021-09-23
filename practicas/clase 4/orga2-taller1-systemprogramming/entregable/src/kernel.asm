@@ -79,11 +79,12 @@ modo_protegido:
     ; <COMPLETAR> ~ 6 lineas 
     ; --> medio sus que nos quedo de 5
     
-    mov DS, DS_RING_0_SEL
-    mov ES, DS_RING_0_SEL
-    mov GS, DS_RING_0_SEL
-    mov FS, DS_RING_0_SEL
-    mov SS, DS_RING_0_SEL
+    mov eax, DS_RING_0_SEL
+    mov DS, eax
+    mov ES, eax
+    mov GS, eax
+    mov FS, eax
+    mov SS, eax
     	
     ; Establecer el tope y la base de la pila
     ; <COMPLETAR> ~ 2 lineas   
