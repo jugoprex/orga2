@@ -32,7 +32,7 @@ start_pm_len equ    $ - start_pm_msg
 ;; -------------------------------------------------------------------------- ;;
 
 ;; Punto de entrada del kernel.
-BITS 16
+BIT 
 start:
     ; Deshabilitar interrupciones
     ; <COMPLETAR>  1 línea
@@ -60,7 +60,6 @@ start:
     ; <COMPLETAR> ~ 1 linea    
     lgdt [GDT_DESC]
     ;  Setear el bit PE del registro CR0
-    xchg bx,bx ;breakpoint
     ; <COMPLETAR> ~ 3 lineas   
     mov eax, CR0
     or eax, 0x00000001 ;cambiamos el primer bit a 1

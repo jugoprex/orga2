@@ -72,5 +72,12 @@ void screen_draw_box(uint32_t fInit, uint32_t cInit, uint32_t fSize,
 
 void screen_draw_layout(void) {
   screen_draw_box(0,0,50,80,0,0);
-  print ("Teamo Team Amogus \n sugma", 0,0,5);
+  screen_draw_box(5,9,1,5,35,4);
+  screen_draw_box(6,8,1,7,35,4);
+  screen_draw_box(7,7,9,9,35,4);
+  screen_draw_box(16,7,2,3,35,4);
+  screen_draw_box(16,13,2,3,35,4);
+  screen_draw_box(8,16,7,2,35,4);
+  screen_draw_box(8,8,3,5,35,3);
+  print ("Inicializando Among OS", 0,0,10);
 }

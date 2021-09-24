@@ -114,7 +114,7 @@ gdt_entry_t gdt[GDT_COUNT] = {
             // <COMPLETAR> con el segmento para ser usado por el video
             // Pueden tomar el descriptor nulo como ejemplo y completar cada uno de los campos
             // con lo correspondiente acorde a lo solicitado en el enunciado
-            .limit_15_0 = 0x14EF,
+            .limit_15_0 = 0x1F3F,
             .base_15_0 = 0x8000,
             .base_23_16 = 0x0B,
             .type = 0x02 ,
