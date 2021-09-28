@@ -99,13 +99,16 @@ modo_protegido:
     call idt_init
     ; Cargar IDT
     lidt [IDT_DESC]
-    xchg bx, bx
+    ;xchg bx, bx
 
     ; ------------------
 
     ; -- CHECKPOINT 3 --
 
     ; habilitar interrupciones
+    sti
+    int 32
+    ;xchg bx, bx
     ; Opcional: hacer una división por cero para probar o usar la instrucción INT (RECORDAR LUEGO BORRAR o COMENTAR LA PRUEBA)
 
     ; ------------------

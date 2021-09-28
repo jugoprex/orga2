@@ -69,6 +69,8 @@ void idt_init() {
   IDT_ENTRY0(20);
   
   // Interrupciones
+  IDT_ENTRY0(32);
+  IDT_ENTRY0(33);
 
   // Syscalls 
   IDT_ENTRY3(88);
