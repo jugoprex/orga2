@@ -96,7 +96,10 @@ modo_protegido:
     ; -- CHECKPOINT 2 --
 
     ; inicializar IDT
+    call idt_init
     ; Cargar IDT
+    lidt [IDT_DESC]
+    xchg bx, bx
 
     ; ------------------
 
