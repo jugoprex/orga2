@@ -79,6 +79,14 @@ void screen_draw_layout(void) {
       p[f][c].a = 0x10;
     }
   }
+  screen_draw_box(5,9,1,5,35,4);
+  screen_draw_box(6,8,1,7,35,4);
+  screen_draw_box(7,7,9,9,35,4);
+  screen_draw_box(16,7,2,3,35,4);
+  screen_draw_box(16,13,2,3,35,4);
+  screen_draw_box(8,16,7,2,35,4);
+  screen_draw_box(8,8,3,5,35,3);
+  print ("Inicializando Among OS", 0,0,10);
 }
 
 void printScanCode(uint8_t scancode){
