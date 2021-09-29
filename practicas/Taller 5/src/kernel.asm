@@ -107,7 +107,9 @@ modo_protegido:
 
     ; habilitar interrupciones
     sti
-    ;xchg bx, bx
+    xchg bx, bx
+    int 32
+    xchg bx, bx
     ; Opcional: hacer una división por cero para probar o usar la instrucción INT (RECORDAR LUEGO BORRAR o COMENTAR LA PRUEBA)
 
     ; ------------------
