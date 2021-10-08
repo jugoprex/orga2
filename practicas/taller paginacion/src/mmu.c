@@ -90,7 +90,7 @@ paddr_t mmu_init_kernel_dir(void) {
 
   for (size_t i = 0; i <= VIRT_PAGE_TABLE(identity_mapping_end); i++) {
     kpt[i] = (pt_entry_t){
-        .attrs = 0,// COMPLETAR: atributos para la tabla de paginas
+        .attrs = 0x143,// COMPLETAR: atributos para la tabla de paginas
         .page = 0x26000 + i * 4096// COMPLETAR: referencia a la parte alta de la i-esima pagina del kernel x id mapping
     };
   }
