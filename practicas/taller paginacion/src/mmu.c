@@ -84,14 +84,14 @@ paddr_t mmu_init_kernel_dir(void) {
           "Rango de Identity Mapping invalido.");
 
   kpd[0] = (pd_entry_t){
-      .attrs = 0,// COMPLETAR: atributos para el directorio de paginas
-      .pt = 0,// COMPLETAR: referencia a la parte alta de la dir. de la tabla de paginas
+      .attrs = 0x003,// COMPLETAR: atributos para el directorio de paginas
+      .pt = 0x25000// COMPLETAR: referencia a la parte alta de la dir. de la tabla de paginas
   };
 
   for (size_t i = 0; i <= VIRT_PAGE_TABLE(identity_mapping_end); i++) {
     kpt[i] = (pt_entry_t){
         .attrs = 0,// COMPLETAR: atributos para la tabla de paginas
-        .page = 0,// COMPLETAR: referencia a la parte alta de la i-esima pagina del kernel x id mapping
+        .page = 0x26000 + i * 4096// COMPLETAR: referencia a la parte alta de la i-esima pagina del kernel x id mapping
     };
   }
 
