@@ -101,10 +101,8 @@ modo_protegido:
     ; Inicializar el manejador de memoria
     call mmu_init
     ; Inicializar el directorio de paginas   ;COMPLETAR:
-    xchg bx, bx
     call mmu_init_kernel_dir
     ; Cargar directorio de paginas  ;COMPLETAR:
-    xchg bx, bx
     shl eax, 12 ;maybe bad
     mov cr3, eax
     ; Habilitar paginacion  ;COMPLETAR:
