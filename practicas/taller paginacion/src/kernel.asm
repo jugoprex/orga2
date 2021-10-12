@@ -103,7 +103,6 @@ modo_protegido:
     ; Inicializar el directorio de paginas   ;COMPLETAR:
     call mmu_init_kernel_dir
     ; Cargar directorio de paginas  ;COMPLETAR:
-    shl eax, 12
     mov cr3, eax
     ; Habilitar paginacion  ;COMPLETAR:    
     mov eax, cr0
