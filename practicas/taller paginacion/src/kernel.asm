@@ -107,11 +107,7 @@ modo_protegido:
     ; Habilitar paginacion  ;COMPLETAR:    
     mov eax, cr0
     or eax, 0x80000000
-
-    xchg bx, bx
     mov cr0, eax
-
-    xchg bx, bx ; no quiero compilar
 
     ; Quiten este jump una vez que terminen mmu_init_task_dir     
     ; Para poder probar el nuevo CR3; COMPLETAR:
