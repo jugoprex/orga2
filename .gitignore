@@ -1,0 +1,7 @@
+*.d
+*.o
+*.bin*
+*.img*
+*.log
+*.sym
+*.tmp
