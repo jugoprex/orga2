@@ -111,7 +111,7 @@ modo_protegido:
 
     ; Quiten este jump una vez que terminen mmu_init_task_dir     
     ; Para poder probar el nuevo CR3; COMPLETAR:
-    jmp cargar_interrupciones
+    ;jmp cargar_interrupciones
     ; Probar estructuras de paginacion para tareas
     ; Preservamos el CR3 del kernel
     mov eax, cr3
@@ -122,6 +122,7 @@ modo_protegido:
     call mmu_init_task_dir
     add esp, 4
     ; Cargamos el nuevo valor de CR3 (el de la tarea)
+    xchg  bx, bx
     mov cr3, eax
     ; Imprimimos los caracteres de prueba
     ;void print_hex(uint32_t numero, int32_t size, uint32_t x, uint32_t y, uint16_t attr);

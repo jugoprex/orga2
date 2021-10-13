@@ -15,7 +15,7 @@ static pd_entry_t* kpd = (pd_entry_t*)KERNEL_PAGE_DIR;
 static pt_entry_t* kpt = (pt_entry_t*)KERNEL_PAGE_TABLE_0;
 
 static const uint32_t identity_mapping_end = 0x003FFFFF;
-static const uint32_t user_memory_pool_end = 0x02FFFFFF;
+// static const uint32_t user_memory_pool_end = 0x02FFFFFF;
 
 static paddr_t next_free_kernel_page = 0x100000;
 static paddr_t next_free_user_page = 0x400000;
@@ -65,10 +65,15 @@ paddr_t mmu_next_free_kernel_page(void) {
  * @return devuelve la dirección de memoria de comienzo de la próxima página libre de usuarix
  */
 paddr_t mmu_next_free_user_page(void) {
+  uint32_t res = next_free_user_page;
+  next_free_user_page += PAGE_SIZE;
+  return res;
+}
+/* paddr_t mmu_next_free_user_page(void) {
   kassert(next_free_user_page < user_memory_pool_end, "OUT OF USER MEMORY");
   return 0;
 
-}
+} */
 
 /**
  * mmu_init_kernel_dir inicializa las estructuras de paginación vinculadas al kernel
@@ -114,10 +119,10 @@ void mmu_map_page(uint32_t cr3, vaddr_t virt, paddr_t phy, uint32_t attrs) {
   if ((pd[pdi].attrs & MMU_P) == 0) {
     // No existe entrada en el directorio de tablas de paginas.
     // Debemos crear un page table y mapearlo.
-    paddr_t new_pt = 0x400000; //COMPLETAR: a donde pedimos la pagina nueva?
+    paddr_t new_pt = mmu_next_free_kernel_page(); //COMPLETAR: a donde pedimos la pagina nueva?
     zero_page(new_pt);
-    pd[pdi].pt = 0x26; // COMPLETAR: referencia a la parte alta de la dir. de la tabla de paginas
-    pd[pdi].attrs |= 0x10; // COMPLETAR: que atributo debemos cambiar de forma explicita?
+    pd[pdi].pt = (new_pt >> 12); // COMPLETAR: referencia a la parte alta de la dir. de la tabla de paginas
+    pd[pdi].attrs |= MMU_P; // COMPLETAR: que atributo debemos cambiar de forma explicita?
   }
   pd[pdi].attrs |= attrs;
 
@@ -208,8 +213,8 @@ paddr_t mmu_init_task_dir(paddr_t phy_start) {
   mmu_map_page(cr3, TASK_CODE_VIRTUAL + PAGE_SIZE * 0, phy_start,
                MMU_P | MMU_U);
   //mapeen la segunda pagina codigo y la pagina de stack de usuarix
-  mmu_map_page(cr3, 0x08000000, phy_start, 0x1);
-  mmu_map_page(cr3, 0x08003000, stack, 0x3); //amongus
+  mmu_map_page(cr3, TASK_CODE_VIRTUAL + PAGE_SIZE, phy_start + PAGE_SIZE, MMU_U | MMU_P);
+  mmu_map_page(cr3, TASK_STACK_BASE, stack, MMU_W | MMU_U | MMU_P); //amongus
 
   return cr3;
 }
