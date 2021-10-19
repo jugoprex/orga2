@@ -148,7 +148,8 @@ modo_protegido:
     out 0x40, al 
     ; Cargar tarea inicial
 	; COMPLETAR
-
+    call tss_init
+    xchg bx, bx
     ; Saltar a la primera tarea: Idle
 	; COMPLETAR
     ; Ciclar infinitamente 
