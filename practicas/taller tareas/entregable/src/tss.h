@@ -56,7 +56,7 @@ typedef struct str_tss {
 extern tss_t tss_initial;
 extern tss_t tss_idle;
 
-void tss_init(void);
+extern void tss_init(void);
 
 extern tss_t tss_tasks[MAX_TASKS];
 tss_t tss_create_user_task(uint32_t cr3);

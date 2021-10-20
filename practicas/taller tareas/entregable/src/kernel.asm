@@ -117,8 +117,9 @@ modo_protegido:
     mov cr0, eax
 
     ; Inicializar tss
+    xchg bx, bx
     call tss_init
-    
+    xchg bx, bx
     ; Inicializar el scheduler
     call sched_init
 
@@ -148,10 +149,11 @@ modo_protegido:
     out 0x40, al 
     ; Cargar tarea inicial
 	; COMPLETAR
-    call tss_init
-    xchg bx, bx
+    mov ax, TASK_INITIAL_SEL
+    ltr ax
     ; Saltar a la primera tarea: Idle
 	; COMPLETAR
+    jmp TASK_IDLE_SEL:0
     ; Ciclar infinitamente 
     mov eax, 0xFFFF
     mov ebx, 0xFFFF

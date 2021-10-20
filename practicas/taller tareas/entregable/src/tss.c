@@ -97,4 +97,4 @@ void tss_init(void) {
 	  //COMPLETAR
 	  gdt[GDT_IDX_TASK_IDLE] = tss_gdt_entry_for_task(&tss_idle);
 	  gdt[GDT_IDX_TASK_INITIAL] = tss_gdt_entry_for_task(&tss_initial);
-}
+} 
