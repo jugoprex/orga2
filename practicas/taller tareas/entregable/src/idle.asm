@@ -10,6 +10,7 @@ BITS 32
 
 idle:
     .loop:
+        xchg bx, bx
         inc dword [number]
         cmp dword [number], 0x4
         jb .print
