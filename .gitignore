@@ -6,3 +6,5 @@
 *.sym
 *.tmp
 *.*tsk*
+
+!diskette.img.bz2
