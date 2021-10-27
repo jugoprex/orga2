@@ -166,7 +166,7 @@ _isr32:
     call next_clock
 	; COMPLETAR
     ; quiten la siguiente linea para poner en ejecucion el scheduler
-	jmp .fin
+	; jmp .fin
     call task_tick
 
     mov ecx, [tick_count]
